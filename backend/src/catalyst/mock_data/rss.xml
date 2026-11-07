@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SIMULATED DATA. Generic RSS 2.0 used for ET / BS / Mint / SEBI / CNBC in mock mode. -->
+<rss version="2.0"><channel><title>Simulated Markets Feed</title>
+<item><title>BEL shares hit record high after fresh defence orders</title><link>https://example.com/sim/rss-bel-record</link><description>Bharat Electronics stock rallied after new order wins. (Simulated)</description><pubDate>Sat, 07 Nov 2026 10:15:00 +0530</pubDate></item>
+<item><title>SEBI imposes penalty on brokerage firm for disclosure lapses</title><link>https://example.com/sim/rss-sebi-penalty</link><description>Order relates to delayed disclosures. (Simulated)</description><pubDate>Sat, 07 Nov 2026 09:30:00 +0530</pubDate></item>
+<item><title>Nifty IT index slips 1% as global tech sells off</title><link>https://example.com/sim/rss-nifty-it</link><description>IT stocks were under pressure. (Simulated)</description><pubDate>Sat, 07 Nov 2026 09:00:00 +0530</pubDate></item>
+</channel></rss>

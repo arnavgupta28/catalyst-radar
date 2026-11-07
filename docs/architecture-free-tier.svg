@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+    <style>
+      .t{font-size:14px;font-weight:700;fill:#0f172a}
+      .n{font-size:13px;font-weight:600;fill:#0f172a}
+      .s{font-size:11px;fill:#475569}
+      .l{font-size:11px;fill:#334155;font-weight:500}
+      .ln{stroke:#475569;stroke-width:1.6;fill:none}
+      .dl{stroke:#94a3b8;stroke-width:1.4;fill:none;stroke-dasharray:5 4}
+      .chip{font-size:10px;font-weight:700;letter-spacing:.4px}
+      .task{font-size:11px;font-weight:600;fill:#7c2d12}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#fff"/>
+  <text x="30" y="40" font-size="24" font-weight="800" fill="#0f172a">Catalyst Radar — Free Tier: Databricks Free Edition + Vercel</text>
+  <text x="30" y="62" font-size="13" fill="#475569">Databricks = engine room (jobs, data, AI) · Vercel = website + thin API · modes: <tspan font-weight="700" fill="#15803d">LIVE</tspan> · <tspan font-weight="700" fill="#7c3aed">LOCAL</tspan> · <tspan font-weight="700" fill="#b45309">MOCK</tspan></text>
+
+  <!-- ===== Column A ===== -->
+  <circle cx="180" cy="112" r="24" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="180" cy="105" r="7" fill="#64748b"/><path d="M165 125 Q180 110 195 125" fill="#64748b"/>
+  <text x="212" y="117" class="n">You (investor)</text>
+  <path class="ln" d="M180 136 L180 166" marker-end="url(#a)"/>
+
+  <rect x="30" y="168" width="300" height="300" rx="12" fill="#f8fafc" stroke="#0f172a" stroke-width="1.6"/>
+  <text x="45" y="192" class="t">▲ Vercel (free, never sleeps)</text>
+  <rect x="45" y="204" width="270" height="56" rx="8" fill="#fff" stroke="#cbd5e1"/>
+  <text x="57" y="224" class="n">Next.js pages</text><text x="57" y="241" class="s">Overview · Feed · Sources · Deep dive</text><text x="57" y="254" class="s">theme + Kat · /compare (Live | Mock)</text>
+  <rect x="45" y="268" width="270" height="92" rx="8" fill="#fff" stroke="#cbd5e1"/>
+  <text x="57" y="288" class="n">API route handlers</text>
+  <text x="57" y="305" class="s">/api/watchlist · /api/alerts · /api/sources</text>
+  <text x="57" y="320" class="s">→ read / write Lakebase (Postgres)</text>
+  <text x="57" y="337" class="s">/api/scan · /api/sources/test</text>
+  <text x="57" y="352" class="s">→ Databricks Jobs API "run now"</text>
+  <rect x="45" y="368" width="270" height="88" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+  <rect x="57" y="378" width="48" height="18" rx="9" fill="#fef3c7"/><text x="64" y="391" class="chip" fill="#b45309">MOCK</text>
+  <text x="112" y="391" class="n">runs in the browser</text>
+  <text x="57" y="414" class="s">Replays real prices + real past events</text>
+  <text x="57" y="430" class="s">from the simulation dataset (Excel → JSON)</text>
+  <text x="57" y="446" class="s">₹0 · zero Databricks quota</text>
+
+  <rect x="30" y="500" width="300" height="130" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+  <text x="45" y="524" class="t">⚙ GitHub Actions (free)</text>
+  <text x="45" y="546" class="s">• Lint + tests on fixtures (no live calls)</text>
+  <text x="45" y="563" class="s">• databricks bundle deploy → jobs</text>
+  <text x="45" y="580" class="s">• Vercel auto-deploys the website</text>
+  <text x="45" y="606" class="s" fill="#b45309">• Backup fetch cron, only if a domain</text>
+  <text x="45" y="621" class="s" fill="#b45309">  gets blocked later</text>
+
+  <rect x="30" y="650" width="300" height="56" rx="12" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="45" y="673" class="n">Sentry · UptimeRobot</text><text x="45" y="692" class="s">web errors · ping /api/health</text>
+
+  <rect x="30" y="724" width="300" height="100" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <rect x="45" y="736" width="52" height="18" rx="9" fill="#ede9fe"/><text x="52" y="749" class="chip" fill="#7c3aed">LOCAL</text>
+  <text x="105" y="749" class="n">Your laptop</text>
+  <text x="45" y="772" class="s">LM Studio · qwen3-1.7b (triage)</text>
+  <text x="45" y="788" class="s">qwen3-4b (extract, write) · qwen3.5-9b (quality)</text>
+  <text x="45" y="808" class="s">docker compose · same pipeline code</text>
+
+  <!-- ===== Column B: Databricks ===== -->
+  <rect x="390" y="88" width="620" height="694" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text x="405" y="112" class="t">◆ Databricks Free Edition — engine room</text>
+  <text x="730" y="112" class="s">dbc-8de4d59f-c9f5.cloud.databricks.com</text>
+
+  <rect x="405" y="124" width="590" height="138" rx="10" fill="#fff" stroke="#fdba74" stroke-width="1.4"/>
+  <text x="417" y="146" class="n">Job: catalyst-pipeline</text><text x="575" y="146" class="s">serverless · every 15 min in market hours, hourly otherwise</text>
+  <rect x="417" y="160" width="140" height="84" rx="8" fill="#ffedd5"/><text x="427" y="180" class="task">1 watch</text><text x="427" y="198" class="s">due sources</text><text x="427" y="213" class="s">TinyFish Fetch/Agent</text><text x="427" y="228" class="s">→ bronze</text>
+  <rect x="567" y="160" width="140" height="84" rx="8" fill="#ffedd5"/><text x="577" y="180" class="task">2 process</text><text x="577" y="198" class="s">de-dup → triage</text><text x="577" y="213" class="s">read → verify → analyse</text><text x="577" y="228" class="s">→ silver / gold</text>
+  <rect x="717" y="160" width="130" height="84" rx="8" fill="#ffedd5"/><text x="727" y="180" class="task">3 publish</text><text x="727" y="198" class="s">new alerts</text><text x="727" y="213" class="s">→ Lakebase</text>
+  <rect x="857" y="160" width="128" height="84" rx="8" fill="#ffedd5"/><text x="867" y="180" class="task">4 usage</text><text x="867" y="198" class="s">API + job minutes</text><text x="867" y="213" class="s">→ budget table</text>
+  <path class="ln" d="M557 202 L565 202" marker-end="url(#a)"/><path class="ln" d="M707 202 L715 202" marker-end="url(#a)"/><path class="ln" d="M847 202 L855 202" marker-end="url(#a)"/>
+
+  <!-- Delta + Lakebase -->
+  <rect x="405" y="300" width="290" height="120" rx="10" fill="#fff" stroke="#fdba74"/>
+  <text x="417" y="322" class="n">Delta Lake (Unity Catalog)</text>
+  <rect x="417" y="334" width="82" height="70" rx="8" fill="#fde7d3"/><text x="427" y="356" class="n">bronze</text><text x="427" y="374" class="s">raw items</text><text x="427" y="389" class="s">landing vol.</text>
+  <rect x="507" y="334" width="82" height="70" rx="8" fill="#e5e7eb"/><text x="517" y="356" class="n">silver</text><text x="517" y="374" class="s">events</text><text x="517" y="389" class="s">facts</text>
+  <rect x="597" y="334" width="86" height="70" rx="8" fill="#fef3c7"/><text x="607" y="356" class="n">gold</text><text x="607" y="374" class="s">alerts</text><text x="607" y="389" class="s">daily stats</text>
+  <path class="ln" d="M487 244 L487 298" marker-end="url(#a)"/>
+  <path class="ln" d="M637 244 L637 298" marker-end="url(#a)"/>
+
+  <rect x="705" y="300" width="290" height="120" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
+  <text x="717" y="322" class="n">Lakebase Postgres (scale-to-zero)</text>
+  <rect x="717" y="334" width="128" height="70" rx="8" fill="#fff" stroke="#bbf7d0"/><text x="729" y="356" class="n">live</text><text x="729" y="374" class="s">watchlist · alerts</text><text x="729" y="389" class="s">sources · prices</text>
+  <rect x="855" y="334" width="128" height="70" rx="8" fill="#fff" stroke="#fde68a"/><text x="867" y="356" class="n">mock</text><text x="867" y="374" class="s">simulated runs</text><text x="867" y="389" class="s">local tests</text>
+  <path class="ln" d="M782 244 L782 298" marker-end="url(#a)"/>
+
+  <!-- jobs row 2 -->
+  <rect x="405" y="458" width="290" height="62" rx="10" fill="#fff" stroke="#fdba74"/>
+  <text x="417" y="480" class="n">Job: catalyst-source-test</text><text x="417" y="498" class="s">on demand · "Test link" for custom sources</text><text x="417" y="512" class="s">returns preview + method (Fetch / Agent)</text>
+  <rect x="705" y="458" width="290" height="62" rx="10" fill="#fff" stroke="#fdba74"/>
+  <text x="717" y="480" class="n">Job: catalyst-prices</text><text x="717" y="498" class="s">every 5 min in market hours</text><text x="717" y="512" class="s">1 batched call per market → Lakebase</text>
+  <path class="ln" d="M920 458 L920 422" marker-end="url(#a)"/>
+  <text x="926" y="444" class="l">quotes</text>
+
+  <text x="405" y="542" class="s">Limits: serverless only · ≤5 concurrent job tasks · one 2X-Small SQL warehouse · daily fair-use quota</text>
+
+  <!-- AI row -->
+  <rect x="405" y="556" width="190" height="96" rx="10" fill="#f5f3ff" stroke="#8b5cf6"/>
+  <rect x="417" y="566" width="44" height="18" rx="9" fill="#dcfce7"/><text x="425" y="579" class="chip" fill="#15803d">LIVE</text>
+  <text x="417" y="602" class="n">Model Serving</text><text x="417" y="619" class="s">Foundation Model APIs</text><text x="417" y="634" class="s">OpenAI-compatible</text>
+  <rect x="605" y="556" width="190" height="96" rx="10" fill="#fff" stroke="#fdba74"/>
+  <text x="617" y="580" class="n">MLflow tracing</text><text x="617" y="598" class="s">every prompt + answer</text><text x="617" y="614" class="s">compare Qwen vs cloud</text><text x="617" y="630" class="s">prompt evals</text>
+  <rect x="805" y="556" width="190" height="96" rx="10" fill="#fff" stroke="#fdba74"/>
+  <text x="817" y="580" class="n">Vector Search (v2)</text><text x="817" y="598" class="s">1 endpoint</text><text x="817" y="614" class="s">same-story de-dup</text><text x="817" y="630" class="s">similar past events</text>
+
+  <!-- bottom row -->
+  <rect x="405" y="666" width="190" height="100" rx="10" fill="#fff" stroke="#fdba74"/>
+  <text x="417" y="690" class="n">🔒 Secret scope</text><text x="417" y="708" class="s">TinyFish · Angel One</text><text x="417" y="724" class="s">Finnhub · Claude keys</text>
+  <rect x="605" y="666" width="190" height="100" rx="10" fill="#fff" stroke="#fdba74"/>
+  <text x="617" y="690" class="n">📊 AI/BI dashboard</text><text x="617" y="708" class="s">usage vs free limits</text><text x="617" y="724" class="s">alerts/day · job health</text>
+  <rect x="805" y="666" width="190" height="100" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.4"/>
+  <text x="817" y="690" class="n" fill="#15803d">✓ Outbound tested</text><text x="817" y="708" class="s">TinyFish · Angel One · Finnhub</text><text x="817" y="724" class="s">NSE blocked → via TinyFish</text><text x="817" y="740" class="s">no LinkedIn needed</text>
+
+  <!-- A -> B -->
+  <path class="ln" d="M315 340 L360 340 L360 203 L403 203" marker-end="url(#a)"/>
+  <text x="338" y="196" class="l">run now</text>
+  <path class="ln" d="M315 315 L370 315 L370 440 L850 440 L850 422" marker-end="url(#a)"/>
+  <text x="560" y="436" class="l">SQL (Postgres) reads / writes</text>
+  <path class="ln" d="M370 440 L370 489 L403 489" marker-end="url(#a)"/>
+  <path class="dl" d="M330 563 L380 563 L380 389 L415 389" marker-end="url(#a)"/>
+  <path class="dl" d="M330 612 L385 612 L385 760 L403 760" marker-end="url(#a)"/>
+  <text x="338" y="655" class="l">deploy</text>
+
+  <!-- ===== Column C ===== -->
+  <rect x="1070" y="88" width="500" height="214" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="1.6"/>
+  <text x="1085" y="112" class="t">🌐 Websites via TinyFish</text>
+  <rect x="1085" y="124" width="150" height="86" rx="8" fill="#fff" stroke="#fdba74"/><text x="1097" y="146" class="n">Fetch + Search</text><text x="1097" y="164" class="s">free daily allowance</text><text x="1097" y="180" class="s">~1,000 URLs/day</text><text x="1097" y="198" class="s">most sources</text>
+  <rect x="1245" y="124" width="150" height="86" rx="8" fill="#fff" stroke="#fdba74"/><text x="1257" y="146" class="n">Agent</text><text x="1315" y="146" class="chip" fill="#b91c1c">$ paid</text><text x="1257" y="164" class="s">stealth browser</text><text x="1257" y="180" class="s">NSE / BSE · ~15/day</text><text x="1257" y="198" class="s">live view URL</text>
+  <rect x="1405" y="124" width="150" height="86" rx="8" fill="#fffbeb" stroke="#fde68a"/><rect x="1417" y="134" width="48" height="18" rx="9" fill="#fef3c7"/><text x="1424" y="147" class="chip" fill="#b45309">MOCK</text><text x="1417" y="170" class="s">fixture replay</text><text x="1417" y="186" class="s">recorded real runs</text>
+  <text x="1085" y="234" class="s">⭐ Zerodha Pulse: main news feed, fetched directly every 5 min</text>
+  <text x="1085" y="250" class="s">Also: NSE · BSE · SEBI · ET · Moneycontrol · BS · Mint · Bloomberg · Screener</text>
+  <text x="1085" y="276" class="s">NSE + BSE block cloud traffic → TinyFish Agent reads them</text>
+
+  <rect x="1070" y="322" width="500" height="186" rx="12" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.6"/>
+  <text x="1085" y="346" class="t">📈 Prices (free daily limits)</text>
+  <text x="1085" y="378" class="n">🇮🇳</text>
+  <rect x="1112" y="360" width="140" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/><text x="1122" y="377" class="n">Angel One</text><text x="1122" y="392" class="s">TOTP auto-login</text>
+  <rect x="1270" y="360" width="125" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/><text x="1280" y="377" class="n">Upstox</text><text x="1280" y="392" class="s">daily OAuth</text>
+  <rect x="1413" y="360" width="142" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/><text x="1423" y="377" class="n">yfinance</text><text x="1423" y="392" class="s">delayed · no key</text>
+  <path class="ln" d="M1252 380 L1268 380" marker-end="url(#a)"/><path class="ln" d="M1395 380 L1411 380" marker-end="url(#a)"/>
+  <text x="1085" y="436" class="n">🇺🇸</text>
+  <rect x="1112" y="418" width="140" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/><text x="1122" y="435" class="n">Finnhub</text><text x="1122" y="450" class="s">~60 calls/min</text>
+  <rect x="1270" y="418" width="125" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/><text x="1280" y="435" class="n">Alpaca</text><text x="1280" y="450" class="s">IEX real-time</text>
+  <rect x="1413" y="418" width="142" height="40" rx="8" fill="#fff" stroke="#bbf7d0"/><text x="1423" y="435" class="n">Twelve Data</text><text x="1423" y="450" class="s">~800/day</text>
+  <path class="ln" d="M1252 438 L1268 438" marker-end="url(#a)"/><path class="ln" d="M1395 438 L1411 438" marker-end="url(#a)"/>
+  <text x="1085" y="490" class="s">Fallback chain left → right · cached in Lakebase · website never calls price APIs</text>
+
+  <rect x="1070" y="528" width="500" height="100" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.6"/>
+  <text x="1085" y="552" class="t">🧠 Claude API (optional)</text>
+  <text x="1085" y="574" class="s">Used if Databricks endpoints aren't good enough, or for the best alerts.</text>
+  <text x="1085" y="590" class="s">Same provider switch: LLM_PROVIDER = databricks | claude | lmstudio | mock</text>
+  <text x="1085" y="612" class="chip" fill="#b91c1c">$ small · budget-guarded</text>
+
+  <!-- B -> C -->
+  <path class="ln" d="M995 180 L1068 180" marker-end="url(#a)"/>
+  <text x="1010" y="172" class="l">fetch</text>
+  <path class="ln" d="M995 489 L1030 489 L1030 410 L1068 410" marker-end="url(#a)"/>
+  <path class="ln" d="M995 230 C1040 230 1030 578 1068 578" marker-end="url(#a)"/>
+  <text x="1036" y="300" class="l" transform="rotate(90 1036 300)">LLM</text>
+
+  <!-- Legend -->
+  <g transform="translate(1070,672)">
+    <text x="0" y="0" class="t">Legend</text>
+    <rect x="0" y="14" width="44" height="18" rx="9" fill="#dcfce7"/><text x="8" y="27" class="chip" fill="#15803d">LIVE</text><text x="52" y="27" class="s">deployed</text>
+    <rect x="130" y="14" width="52" height="18" rx="9" fill="#ede9fe"/><text x="137" y="27" class="chip" fill="#7c3aed">LOCAL</text><text x="190" y="27" class="s">laptop</text>
+    <rect x="260" y="14" width="48" height="18" rx="9" fill="#fef3c7"/><text x="267" y="27" class="chip" fill="#b45309">MOCK</text><text x="316" y="27" class="s">simulated, ₹0</text>
+    <line x1="0" y1="56" x2="30" y2="56" class="ln"/><text x="38" y="60" class="s">data / calls</text>
+    <line x1="130" y1="56" x2="160" y2="56" class="dl"/><text x="168" y="60" class="s">deploy / fallback</text>
+    <text x="300" y="60" class="chip" fill="#b91c1c">$ = paid</text>
+  </g>
+  <text x="30" y="860" font-size="11" fill="#64748b">Free: Databricks Free Edition (non-commercial, fair-use quota) · Vercel Hobby · GitHub Actions · Sentry · UptimeRobot · TinyFish Fetch/Search · free price APIs. Paid: TinyFish Agent, Claude (optional). Limits are reported values; verify before relying on them.</text>
+</svg>

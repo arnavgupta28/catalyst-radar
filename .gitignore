@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.coverage
+htmlcov/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# Node / web
+node_modules/
+.next/
+out/
+.vercel/
+
+# Databricks
+.databricks/
+.bundle/
+
+# Local data
+*.sqlite
+*.db
+data/local/
+data/simulation/raw/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Third-party design references (kept local; not ours to publish)
+theme/

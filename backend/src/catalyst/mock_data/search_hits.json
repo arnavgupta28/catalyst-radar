@@ -1,0 +1,6 @@
+[
+ {"title":"Larsen & Toubro order inflow strong in metro segment","snippet":"Analysts say the new metro order adds to L&T's order book. (Simulated)","url":"https://example.com/sim/search-lt","site_name":"Simulated News","date":"{{iso:-30}}"},
+ {"title":"Nvidia faces probe over new export curbs","snippet":"Regulators are reviewing chip shipments. (Simulated)","url":"https://example.com/sim/search-nvda","site_name":"Simulated Wire","date":"{{iso:-200}}"},
+ {"title":"Apple unveils new AI features at product event","snippet":"The company showed new features. (Simulated)","url":"https://example.com/sim/search-aapl","site_name":"Simulated Tech","date":"{{iso:-400}}"},
+ {"title":"Reliance Industries acquisition of renewable startup approved by board","snippet":"Board cleared the ₹4,000 crore deal. (Simulated)","url":"https://example.com/sim/search-ril","site_name":"Simulated Business","date":"{{iso:-100}}"}
+]

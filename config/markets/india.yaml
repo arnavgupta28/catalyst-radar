@@ -1,0 +1,194 @@
+# India market pack. Sources are data, not code: add a source by adding an entry.
+# method:  direct          plain HTTPS from the job (cheapest)
+#          tinyfish_fetch  TinyFish Fetch (free up to 1,000 URLs/day)
+#          tinyfish_search TinyFish Search (free up to 12,000 requests/day)
+#          auto            direct, then tinyfish_fetch if blocked
+# TinyFish Agent is deliberately NOT used (paid per step).
+market:
+  id: india
+  name: India
+  flag: "🇮🇳"
+  currency: INR
+  timezone: Asia/Kolkata
+  open: "09:15"
+  close: "15:30"
+  exchanges: [NSE, BSE, MCX]
+  price_providers: [angelone, yfinance]
+
+sources:
+  # ---------- News (main feed) ----------
+  - id: pulse
+    name: Zerodha Pulse
+    url: https://pulse.zerodha.com/
+    parser: pulse
+    method: auto
+    trust: news
+    interval: 5m
+    active_hours: "07:00-23:00"
+
+  - id: mc_markets_news
+    name: Moneycontrol – Markets news
+    url: https://www.moneycontrol.com/news/business/markets/
+    parser: mc_news_list
+    method: auto
+    trust: news
+    interval: 15m
+    active_hours: "07:00-23:00"
+
+  - id: mc_earnings_news
+    name: Moneycontrol – Earnings news
+    url: https://www.moneycontrol.com/news/business/earnings/
+    parser: mc_news_list
+    method: auto
+    trust: news
+    interval: 30m
+    active_hours: "07:00-23:00"
+
+  - id: mc_brokerage_calls
+    name: Moneycontrol – Brokerage calls (third-party opinion)
+    url: https://www.moneycontrol.com/news/business/stocks/
+    parser: mc_news_list
+    method: auto
+    trust: news
+    tag: brokerage_view
+    interval: 60m
+    active_hours: "07:00-23:00"
+
+  - id: et_markets_rss
+    name: Economic Times – Markets (RSS)
+    url: https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms
+    parser: rss
+    method: auto
+    trust: news
+    interval: 15m
+
+  - id: bs_markets_rss
+    name: Business Standard – Markets (RSS)
+    url: https://www.business-standard.com/rss/markets-106.rss
+    parser: rss
+    method: auto
+    trust: news
+    interval: 15m
+
+  - id: mint_markets_rss
+    name: Mint – Markets (RSS)
+    url: https://www.livemint.com/rss/markets
+    parser: rss
+    method: auto
+    trust: news
+    interval: 15m
+
+  # ---------- Per-company search (TinyFish Search, free) ----------
+  - id: company_news_search
+    name: Company news search
+    parser: tinyfish_search
+    method: tinyfish_search
+    trust: news
+    scope: company
+    query: "{name} share news"
+    search: {domain_type: news, recency_minutes: 1440, location: IN, language: en}
+    interval: 30m
+    active_hours: "07:00-23:00"
+
+  - id: bloomberg_headlines_search
+    name: Bloomberg headlines (via search)
+    parser: tinyfish_search
+    method: tinyfish_search
+    trust: news
+    scope: company
+    query: "{name} site:bloomberg.com"
+    search: {domain_type: news, recency_minutes: 4320, location: IN, language: en}
+    interval: 180m
+
+  # ---------- Official / relayed filings ----------
+  - id: mc_corporate_action
+    name: Moneycontrol – Corporate actions & announcements
+    url: https://www.moneycontrol.com/markets/corporate-action/
+    parser: mc_corporate_action
+    method: auto
+    trust: official     # relays exchange announcements (board meetings, AGM, announcements)
+    interval: 60m
+
+  - id: nse_announcements
+    name: NSE – Corporate announcements
+    url: "https://www.nseindia.com/api/corporate-announcements?index=equities&symbol={symbol}"
+    parser: nse_announcements
+    method: tinyfish_fetch   # NSE times out from Databricks; test via Fetch
+    trust: official
+    scope: company
+    exchange: NSE
+    interval: 30m
+    active_hours: "08:00-22:00"
+
+  - id: bse_announcements
+    name: BSE – Corporate announcements
+    url: https://www.bseindia.com/corporates/ann.html
+    parser: none
+    method: tinyfish_fetch
+    trust: official
+    exchange: BSE
+    interval: 30m
+    enabled: false           # blocks plain requests; would need the (paid) Agent
+
+  - id: sebi_rss
+    name: SEBI – Orders & press releases (RSS)
+    url: https://www.sebi.gov.in/sebirss.xml
+    parser: rss
+    method: auto
+    trust: official
+    interval: 60m
+
+  # ---------- Market data (context + triggers) ----------
+  - id: mc_price_shockers
+    name: Moneycontrol – Price shockers (NSE)
+    url: https://www.moneycontrol.com/stocks/market-stats/price-shockers-nse/
+    parser: mc_market_stats
+    method: auto
+    trust: context
+    tag: unusual_move
+    interval: 15m
+    active_hours: "09:15-15:45"
+
+  - id: mc_volume_shockers
+    name: Moneycontrol – Volume shockers (NSE)
+    url: https://www.moneycontrol.com/stocks/market-stats/volume-shockers-nse/
+    parser: mc_market_stats
+    method: auto
+    trust: context
+    tag: unusual_move
+    interval: 15m
+    active_hours: "09:15-15:45"
+
+  - id: mc_deals
+    name: Moneycontrol – Bulk / block / insider deals
+    url: https://www.moneycontrol.com/markets/stock-deals/
+    parser: mc_deals
+    method: auto
+    trust: context
+    interval: 1d
+
+  - id: mc_earnings_calendar
+    name: Moneycontrol – Earnings calendar
+    url: https://www.moneycontrol.com/markets/earnings/
+    parser: mc_earnings_calendar
+    method: auto
+    trust: context
+    interval: 6h
+
+  - id: mc_fii_dii
+    name: Moneycontrol – FII / DII activity
+    url: https://www.moneycontrol.com/markets/fii-dii-data/
+    parser: mc_fii_dii
+    method: auto
+    trust: context
+    interval: 1d
+
+  - id: screener
+    name: Screener.in – Financials
+    url: "https://www.screener.in/company/{symbol}/"
+    parser: none
+    method: tinyfish_fetch
+    trust: context
+    scope: company
+    interval: 1d
+    enabled: false           # v2: financial context for "why it matters"

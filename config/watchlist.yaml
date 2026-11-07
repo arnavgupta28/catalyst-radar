@@ -1,0 +1,98 @@
+# Starting watchlist. One company can have several listings (exchanges / currencies).
+# asset_class: equity | etf | commodity   (shown separately in the app)
+companies:
+  - id: larsen-toubro
+    name: Larsen & Toubro
+    aliases: ["L&T", "Larsen", "Larsen and Toubro", "LT"]
+    sector: Capital Goods
+    industry: Engineering & Construction
+    asset_class: equity
+    listings:
+      - {exchange: NSE, symbol: LT, currency: INR, yahoo: LT.NS}
+      - {exchange: BSE, symbol: "500510", currency: INR, yahoo: LT.BO}
+
+  - id: bharat-electronics
+    name: Bharat Electronics
+    aliases: ["BEL", "Bharat Electronics Ltd"]
+    sector: Capital Goods
+    industry: Aerospace & Defence
+    asset_class: equity
+    listings:
+      - {exchange: NSE, symbol: BEL, currency: INR, yahoo: BEL.NS}
+      - {exchange: BSE, symbol: "500049", currency: INR, yahoo: BEL.BO}
+
+  - id: infosys
+    name: Infosys
+    aliases: ["Infosys", "INFY", "Infosys Ltd"]
+    sector: Information Technology
+    industry: IT Services
+    asset_class: equity
+    listings:
+      - {exchange: NSE, symbol: INFY, currency: INR, yahoo: INFY.NS}
+      - {exchange: BSE, symbol: "500209", currency: INR, yahoo: INFY.BO}
+      - {exchange: NYSE, symbol: INFY, currency: USD, yahoo: INFY, cik: "0001067491"}
+
+  - id: hdfc-bank
+    name: HDFC Bank
+    aliases: ["HDFC Bank", "HDFCBANK"]
+    sector: Financial Services
+    industry: Private Bank
+    asset_class: equity
+    listings:
+      - {exchange: NSE, symbol: HDFCBANK, currency: INR, yahoo: HDFCBANK.NS}
+      - {exchange: BSE, symbol: "500180", currency: INR, yahoo: HDFCBANK.BO}
+
+  - id: reliance-industries
+    name: Reliance Industries
+    aliases: ["Reliance", "RIL", "Reliance Industries Ltd"]
+    sector: Energy
+    industry: Oil, Gas & Consumer
+    asset_class: equity
+    listings:
+      - {exchange: NSE, symbol: RELIANCE, currency: INR, yahoo: RELIANCE.NS}
+      - {exchange: BSE, symbol: "500325", currency: INR, yahoo: RELIANCE.BO}
+
+  - id: nippon-nifty-bees
+    name: Nippon India ETF Nifty 50 BeES
+    aliases: ["NIFTYBEES", "Nifty BeES"]
+    sector: Index
+    industry: Equity ETF
+    asset_class: etf
+    listings:
+      - {exchange: NSE, symbol: NIFTYBEES, currency: INR, yahoo: NIFTYBEES.NS}
+
+  - id: nippon-gold-bees
+    name: Nippon India ETF Gold BeES
+    aliases: ["GOLDBEES", "Gold BeES"]
+    sector: Commodities
+    industry: Gold ETF
+    asset_class: etf
+    listings:
+      - {exchange: NSE, symbol: GOLDBEES, currency: INR, yahoo: GOLDBEES.NS}
+
+  - id: gold
+    name: Gold
+    aliases: ["gold prices", "MCX gold"]
+    sector: Commodities
+    industry: Precious Metals
+    asset_class: commodity
+    listings:
+      - {exchange: MCX, symbol: GOLD, currency: INR, yahoo: "GC=F"}
+
+  - id: apple
+    name: Apple
+    aliases: ["Apple Inc", "AAPL"]
+    sector: Information Technology
+    industry: Consumer Electronics
+    asset_class: equity
+    listings:
+      - {exchange: NASDAQ, symbol: AAPL, currency: USD, yahoo: AAPL, cik: "0000320193"}
+
+  - id: nvidia
+    name: NVIDIA
+    aliases: ["Nvidia", "NVDA"]
+    sector: Information Technology
+    industry: Semiconductors
+    asset_class: equity
+    listings:
+      - {exchange: NASDAQ, symbol: NVDA, currency: USD, yahoo: NVDA, cik: "0001045810"}

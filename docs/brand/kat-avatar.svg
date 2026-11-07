@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <title>Kat — the Catalyst Radar avatar</title>
+  <defs>
+    <radialGradient id="k-bg" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1d1638"/><stop offset="100%" stop-color="#050507"/>
+    </radialGradient>
+    <linearGradient id="k-ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4f25a"/><stop offset="50%" stop-color="#c4b5fd"/><stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="k-head" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f1ecff"/><stop offset="45%" stop-color="#c4b5fd"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="k-sweep" gradientUnits="userSpaceOnUse" x1="226" y1="74" x2="128" y2="14">
+      <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.55"/><stop offset="100%" stop-color="#c4b5fd" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="k-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="k-clip"><circle cx="128" cy="128" r="120"/></clipPath>
+  </defs>
+  <!-- base -->
+  <circle cx="128" cy="128" r="124" fill="url(#k-bg)"/>
+  <circle cx="128" cy="128" r="122" fill="none" stroke="url(#k-ring)" stroke-width="3"/>
+  <g clip-path="url(#k-clip)">
+    <!-- radar rings -->
+    <g fill="none" stroke="#c4b5fd" stroke-opacity="0.16">
+      <circle cx="128" cy="128" r="40"/><circle cx="128" cy="128" r="76"/><circle cx="128" cy="128" r="110"/>
+      <line x1="8" y1="128" x2="248" y2="128"/><line x1="128" y1="8" x2="128" y2="248"/>
+    </g>
+    <!-- sweep -->
+    <g><animateTransform attributeName="transform" type="rotate" from="0 128 128" to="360 128 128" dur="4s" repeatCount="indefinite"/>
+      <path d="M128 128 L128 8 A120 120 0 0 1 232 68 Z" fill="url(#k-sweep)"/>
+      <line x1="128" y1="128" x2="232" y2="68" stroke="#e9e2ff" stroke-opacity="0.7" stroke-width="1.5"/>
+    </g>
+    <!-- blips: catalysts found -->
+    <circle cx="200" cy="96" r="4.5" fill="#d4f25a" filter="url(#k-glow)" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="4s" begin="0.6s" repeatCount="indefinite"/></circle>
+    <circle cx="62" cy="200" r="3.5" fill="#d4f25a" filter="url(#k-glow)" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="4s" begin="2.4s" repeatCount="indefinite"/></circle>
+  </g>
+  <!-- Kat's head -->
+  <path d="M74 116 L80 62 Q82 52 90 57 L113 80 Q128 76 143 80 L166 57 Q174 52 176 62 L182 116 Q190 136 184 156 Q174 194 128 196 Q82 194 72 156 Q66 136 74 116 Z" fill="url(#k-head)"/>
+  <path d="M86 70 L106 86 L90 96 Z" fill="#7c3aed" opacity="0.45"/>
+  <path d="M170 70 L150 86 L166 96 Z" fill="#7c3aed" opacity="0.45"/>
+  <!-- eyes -->
+  <g filter="url(#k-glow)">
+    <ellipse cx="106" cy="138" rx="10" ry="12" fill="#d4f25a"><animate attributeName="ry" values="12;12;1.5;12;12" keyTimes="0;0.9;0.94;0.98;1" dur="5s" repeatCount="indefinite"/></ellipse>
+    <ellipse cx="150" cy="138" rx="10" ry="12" fill="#d4f25a"><animate attributeName="ry" values="12;12;1.5;12;12" keyTimes="0;0.9;0.94;0.98;1" dur="5s" repeatCount="indefinite"/></ellipse>
+  </g>
+  <ellipse cx="106" cy="138" rx="2.6" ry="7" fill="#0b0b10"><animate attributeName="ry" values="7;7;0.5;7;7" keyTimes="0;0.9;0.94;0.98;1" dur="5s" repeatCount="indefinite"/></ellipse>
+  <ellipse cx="150" cy="138" rx="2.6" ry="7" fill="#0b0b10"><animate attributeName="ry" values="7;7;0.5;7;7" keyTimes="0;0.9;0.94;0.98;1" dur="5s" repeatCount="indefinite"/></ellipse>
+  <!-- nose + mouth -->
+  <path d="M122 160 Q128 156 134 160 Q129 167 128 167 Q127 167 122 160 Z" fill="#4c1d95"/>
+  <path d="M128 167 Q124 174 117 171 M128 167 Q132 174 139 171" fill="none" stroke="#4c1d95" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- whiskers -->
+  <g stroke="#3b0764" stroke-opacity="0.45" stroke-width="1.6" stroke-linecap="round">
+    <line x1="92" y1="162" x2="62" y2="156"/><line x1="92" y1="168" x2="62" y2="172"/>
+    <line x1="164" y1="162" x2="194" y2="156"/><line x1="164" y1="168" x2="194" y2="172"/>
+  </g>
+  <!-- catalyst spark -->
+  <g transform="translate(184 52)">
+    <path d="M0 -13 Q2 -2 13 0 Q2 2 0 13 Q-2 2 -13 0 Q-2 -2 0 -13 Z" fill="#d4f25a" filter="url(#k-glow)"><animateTransform attributeName="transform" type="scale" values="1;1.25;1" dur="2.4s" additive="sum" repeatCount="indefinite"/></path>
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+resources:
+  jobs:
+    catalyst_pipeline:
+      name: catalyst-pipeline
+      description: Watch sources → triage → verify → write alerts (Delta). Serverless.
+      max_concurrent_runs: 1
+      schedule:
+        # Every 15 min, 07:00–23:45 IST. The pipeline itself skips sources that aren't due.
+        quartz_cron_expression: "0 0/15 7-23 * * ?"
+        timezone_id: Asia/Kolkata
+        pause_status: PAUSED
+      tasks:
+        - task_key: run
+          notebook_task:
+            notebook_path: ../../databricks/notebooks/10_pipeline_run.py
+            base_parameters:
+              mode: ${var.mode}
+              catalog: ${var.catalog}
+              prefix: ${var.prefix}
+              force: "false"
+              only: ""
+          timeout_seconds: 1200
+          max_retries: 1
+          min_retry_interval_millis: 60000

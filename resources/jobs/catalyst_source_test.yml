@@ -1,0 +1,15 @@
+resources:
+  jobs:
+    catalyst_source_test:
+      name: catalyst-source-test
+      description: On demand. "Test link" for a custom source (the website triggers it with run-now).
+      max_concurrent_runs: 3
+      tasks:
+        - task_key: test
+          notebook_task:
+            notebook_path: ../../databricks/notebooks/12_source_test.py
+            base_parameters:
+              url: https://pulse.zerodha.com/
+              parser: pulse
+              method: auto
+          timeout_seconds: 300

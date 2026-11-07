@@ -1,0 +1,118 @@
+cloud-architecture-diagram
+
+title Catalyst Radar - System Architecture
+direction right
+
+// ---------- 1. Sources ----------
+Official Sources [icon: shield, color: green] {
+  NSE Announcements [icon: file-text]
+  BSE Announcements [icon: file-text]
+  SEBI Orders [icon: alert-triangle]
+}
+
+News Sources [icon: globe, color: yellow] {
+  Zerodha Pulse [icon: rss]
+  Moneycontrol [icon: globe]
+  Economic Times [icon: globe]
+  Business Standard [icon: globe]
+  Mint [icon: globe]
+  Bloomberg Headlines [icon: globe]
+}
+
+Context Source [icon: bar-chart-2, color: blue] {
+  Screener [icon: bar-chart-2]
+}
+
+Custom and US Sources [icon: plus-circle, color: purple] {
+  User Added Sources [icon: link]
+  SEC EDGAR [icon: file-text]
+  US News [icon: globe]
+}
+
+Market Config [icon: settings, color: gray] {
+  India Pack [icon: file]
+  US Pack [icon: file]
+}
+
+Price APIs [icon: trending-up, color: purple] {
+  Kite Connect [icon: trending-up]
+  Groww API [icon: trending-up]
+  Finnhub US [icon: trending-up]
+}
+
+// ---------- 2. TinyFish ----------
+TinyFish [icon: cpu, color: orange] {
+  Fetch API [icon: download]
+  Agent API [icon: monitor]
+  Search API [icon: search]
+}
+
+// ---------- 3. Backend ----------
+Backend [icon: server, color: gray] {
+  Source Registry [icon: list]
+  Source Tester [icon: check-square]
+  Scheduler [icon: clock]
+  Redis Queue [icon: redis]
+  Agent Pipeline [icon: git-merge] {
+    Watcher [icon: eye]
+    Dedup and Match [icon: filter]
+    Triage [icon: sliders]
+    Investigator [icon: search]
+    Verifier [icon: check-circle]
+    Analyst [icon: edit-3]
+    Publisher [icon: send]
+  }
+  FastAPI [icon: python]
+}
+
+Claude [icon: message-square, color: orange]
+
+Storage [icon: database, color: blue] {
+  Postgres [icon: postgres]
+  Redis Cache [icon: redis]
+}
+
+// ---------- 4. Frontend ----------
+Web App [icon: react, color: blue] {
+  Watchlist [icon: list]
+  Feed [icon: bell]
+  Deep Dive [icon: zoom-in]
+}
+
+User [icon: user]
+
+// ---------- Connections ----------
+Market Config > Source Registry: load packs
+Web App > Source Tester: add source
+Source Tester > Fetch API: test link
+Source Tester > Source Registry: save as unverified
+Source Registry > Scheduler
+Scheduler > Redis Queue: jobs
+Fetch API > Custom and US Sources
+Redis Queue > Watcher
+Watcher > Fetch API: simple pages
+Watcher > Agent API: hard pages
+Fetch API > News Sources
+Fetch API > SEBI Orders
+Agent API > NSE Announcements
+Agent API > BSE Announcements
+Agent API > Bloomberg Headlines
+
+Watcher > Dedup and Match > Triage > Investigator > Verifier > Analyst > Publisher
+Triage > Claude: Haiku
+Investigator > Agent API: read filing PDF
+Verifier > Search API
+Verifier > Fetch API
+Analyst > Claude: Sonnet
+Analyst > Screener: financial context
+Analyst > Kite Connect: price reaction
+
+Publisher > Postgres
+Publisher > Redis Cache: pub/sub
+FastAPI > Postgres
+FastAPI > Kite Connect: live quotes
+FastAPI > Groww API: fallback
+FastAPI > Finnhub US: US quotes
+FastAPI > Redis Cache: SSE events
+Web App <> FastAPI: REST + SSE
+User > Web App

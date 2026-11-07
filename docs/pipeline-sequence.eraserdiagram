@@ -1,0 +1,43 @@
+sequence-diagram
+
+title Catalyst Radar - From announcement to alert
+
+Scheduler [icon: clock]
+Watcher [icon: eye]
+TinyFish [icon: cpu, color: orange]
+Triage [icon: sliders]
+Investigator [icon: search]
+Verifier [icon: check-circle]
+Analyst [icon: edit-3]
+Claude [icon: message-square, color: orange]
+DB [icon: database, color: blue]
+WebApp [icon: react, color: blue]
+
+Scheduler > Watcher: every 5 min (NSE)
+Watcher > TinyFish: Agent run (stealth) - list today's announcements
+TinyFish --> WebApp: streaming_url (live browser view)
+TinyFish > Watcher: items JSON (output_schema)
+Watcher > DB: save new items (skip if content_hash exists)
+
+loop [label: each new item] {
+  Watcher > Triage: item
+  Triage > Claude: classify (Haiku)
+  Claude > Triage: event_type, materiality
+  alt [label: materiality >= 60] {
+    Triage > Investigator: material event
+    Investigator > TinyFish: open filing PDF, extract facts
+    TinyFish > Investigator: facts JSON
+    Investigator > Verifier: facts
+    Verifier > TinyFish: Search + Fetch other sources
+    TinyFish > Verifier: matching articles
+    Verifier > Analyst: facts + verification + evidence
+    Analyst > Claude: write alert (Sonnet, cite evidence ids)
+    Claude > Analyst: alert JSON
+    Analyst > Analyst: validate schema + citations
+    Analyst > DB: save alert
+    DB --> WebApp: SSE new alert
+  }
+  else [label: routine] {
+    Triage > DB: mark as routine
+  }
+}

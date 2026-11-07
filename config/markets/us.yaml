@@ -1,0 +1,39 @@
+# US market pack (starter). Same rules as india.yaml.
+market:
+  id: us
+  name: US
+  flag: "🇺🇸"
+  currency: USD
+  timezone: America/New_York
+  open: "09:30"
+  close: "16:00"
+  exchanges: [NYSE, NASDAQ]
+  price_providers: [finnhub]
+
+sources:
+  - id: sec_submissions
+    name: SEC EDGAR – Filings (8-K, 10-Q, 6-K…)
+    url: "https://data.sec.gov/submissions/CIK{cik}.json"
+    parser: sec_submissions
+    method: direct
+    trust: official
+    scope: company
+    interval: 30m
+
+  - id: us_company_news_search
+    name: Company news search
+    parser: tinyfish_search
+    method: tinyfish_search
+    trust: news
+    scope: company
+    query: "{name} stock news"
+    search: {domain_type: news, recency_minutes: 1440, location: US, language: en}
+    interval: 60m
+
+  - id: cnbc_rss
+    name: CNBC – Markets (RSS)
+    url: https://www.cnbc.com/id/10000664/device/rss/rss.html
+    parser: rss
+    method: auto
+    trust: news
+    interval: 30m

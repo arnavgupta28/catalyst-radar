@@ -1,0 +1,55 @@
+# Cheap first-pass triage: keyword rules decide event type + base materiality (0-100).
+# Items scoring below `threshold` are routine and stop here (no LLM call).
+threshold: 55
+
+event_types:
+  order_win:
+    keywords: ["order win", "wins order", "bags order", "secures order", "receives order", "contract worth", "order worth", "order inflow", "letter of award"]
+    base: 70
+    sentiment: positive
+  results:
+    keywords: ["q1 result", "q2 result", "q3 result", "q4 result", "quarterly result", "net profit", "profit rises", "profit falls", "revenue rises", "earnings", "results"]
+    base: 65
+    sentiment: mixed
+  results_scheduled:
+    keywords: ["board meeting", "to consider financial results", "results date", "earnings date"]
+    base: 60
+    sentiment: neutral
+  management_change:
+    keywords: ["resigns", "resignation", "appoints", "appointed", "ceo", "cfo", "managing director", "steps down"]
+    base: 62
+    sentiment: mixed
+  regulatory:
+    keywords: ["sebi", "penalty", "fine", "show cause", "probe", "investigation", "settlement order", "ban", "rbi"]
+    base: 66
+    sentiment: negative
+  deal_mna:
+    keywords: ["acquire", "acquisition", "merger", "stake sale", "buys stake", "joint venture", "demerger"]
+    base: 68
+    sentiment: mixed
+  corporate_action:
+    keywords: ["dividend", "bonus issue", "stock split", "buyback", "rights issue", "record date"]
+    base: 58
+    sentiment: positive
+  bulk_block_deal:
+    keywords: ["bulk deal", "block deal", "insider", "promoter buys", "promoter sells", "pledge"]
+    base: 60
+    sentiment: mixed
+  unusual_move:
+    keywords: ["price shocker", "volume shocker", "52-week high", "52-week low", "upper circuit", "lower circuit", "surges", "plunges", "jumps", "slumps"]
+    base: 57
+    sentiment: mixed
+  brokerage_view:
+    keywords: ["target of rs", "target price", "upgrade", "downgrade", "buy;", "sell;", "neutral;"]
+    base: 50
+    sentiment: mixed
+  routine:
+    keywords: ["trading window", "investor meet", "analyst meet", "newspaper publication", "duplicate share", "loss of share certificate", "compliance certificate"]
+    base: 15
+    sentiment: neutral
+
+# Bonuses added to the base score
+boosts:
+  official_source: 10        # trust == official
+  multi_outlet: 3            # per extra outlet covering the same story (max 3 outlets)
+  large_amount: 8            # mentions ₹ crore / $ million+ amounts

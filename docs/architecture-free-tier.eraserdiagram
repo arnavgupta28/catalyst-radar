@@ -1,0 +1,75 @@
+cloud-architecture-diagram
+
+title Catalyst Radar - Free Tier (Databricks Free Edition + Vercel)
+direction right
+
+Investor [icon: user]
+
+Vercel [icon: vercel, color: gray] {
+  Next.js Pages [icon: react]
+  API Routes [icon: code]
+  Mock Simulator in Browser [icon: play-circle]
+}
+
+GitHub Actions [icon: github] {
+  CI and Bundle Deploy [icon: upload-cloud]
+  Fallback Fetch Cron [icon: clock]
+}
+
+Laptop [icon: laptop, color: purple] {
+  LM Studio Qwen3 [icon: cpu]
+}
+
+Databricks Free Edition [icon: databricks, color: orange] {
+  Jobs [icon: calendar] {
+    catalyst-pipeline [icon: git-merge]
+    catalyst-prices [icon: trending-up]
+    catalyst-source-test [icon: check-square]
+  }
+  Delta Lake [icon: layers] {
+    Bronze [icon: database]
+    Silver [icon: database]
+    Gold [icon: database]
+  }
+  Lakebase Postgres [icon: postgres] {
+    live schema [icon: database]
+    mock schema [icon: database]
+  }
+  Model Serving [icon: cpu]
+  MLflow Tracing [icon: activity]
+  Vector Search v2 [icon: search]
+  Secret Scopes [icon: lock]
+  AIBI Dashboard [icon: bar-chart-2]
+}
+
+Web Reading [icon: globe, color: orange] {
+  TinyFish Fetch Search [icon: download]
+  TinyFish Agent paid [icon: monitor]
+}
+
+Prices [icon: trending-up, color: green] {
+  Angel One SmartAPI [icon: trending-up]
+  Upstox [icon: trending-up]
+  yfinance [icon: trending-up]
+  Finnhub US [icon: trending-up]
+}
+
+Claude API optional [icon: message-square, color: purple]
+
+Investor > Next.js Pages
+API Routes > Lakebase Postgres: SQL reads and writes
+API Routes > catalyst-pipeline: run now
+API Routes > catalyst-source-test: test link
+catalyst-pipeline > Web Reading: watch, read, verify
+catalyst-pipeline > Model Serving: triage, extract, write
+catalyst-pipeline > Claude API optional
+catalyst-pipeline > Delta Lake
+catalyst-pipeline > Lakebase Postgres: publish alerts
+catalyst-prices > Prices
+catalyst-prices > Lakebase Postgres: quotes
+Model Serving > MLflow Tracing
+Delta Lake > AIBI Dashboard
+CI and Bundle Deploy > Jobs: databricks bundle deploy
+Fallback Fetch Cron > Bronze: backup only
+Zerodha Pulse [icon: rss, color: yellow]
+catalyst-pipeline > Zerodha Pulse: every 5 min, direct

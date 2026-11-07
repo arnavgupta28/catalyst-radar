@@ -1,0 +1,27 @@
+# Databricks Asset Bundle for Catalyst Radar (Free Edition workspace).
+#   databricks bundle validate
+#   databricks bundle deploy            # creates/updates the jobs (schedules start PAUSED)
+#   databricks bundle run catalyst_pipeline
+bundle:
+  name: catalyst-radar
+
+include:
+  - resources/jobs/*.yml
+
+variables:
+  catalog:
+    description: Unity Catalog catalog (use "workspace" if 00_setup fell back)
+    default: catalyst
+  prefix:
+    description: Schema prefix ("" or "catalyst_" when using the workspace catalog)
+    default: ""
+  mode:
+    description: mock (simulated, no secrets) or live (real sources; needs the catalyst secret scope)
+    default: mock
+
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace:
+      host: https://dbc-8de4d59f-c9f5.cloud.databricks.com

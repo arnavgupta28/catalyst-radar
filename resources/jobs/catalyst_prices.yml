@@ -1,0 +1,19 @@
+resources:
+  jobs:
+    catalyst_prices:
+      name: catalyst-prices
+      description: Batched quotes for every watchlist listing → silver.price_quotes. Market hours only.
+      max_concurrent_runs: 1
+      schedule:
+        quartz_cron_expression: "0 0/5 9-15 ? * MON-FRI"
+        timezone_id: Asia/Kolkata
+        pause_status: PAUSED
+      tasks:
+        - task_key: quotes
+          notebook_task:
+            notebook_path: ../../databricks/notebooks/11_prices_run.py
+            base_parameters:
+              mode: ${var.mode}
+              catalog: ${var.catalog}
+              prefix: ${var.prefix}
+          timeout_seconds: 300

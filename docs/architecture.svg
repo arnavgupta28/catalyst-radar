@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 870" width="1600" height="870" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ea580c"/>
+    </marker>
+    <style>
+      .grp-title { font-size: 14px; font-weight: 700; fill: #0f172a; }
+      .node { font-size: 13px; font-weight: 600; fill: #0f172a; }
+      .sub { font-size: 11px; fill: #475569; }
+      .lbl { font-size: 11px; fill: #334155; font-weight: 500; }
+      .line { stroke: #475569; stroke-width: 1.6; fill: none; }
+      .dash { stroke: #ea580c; stroke-width: 1.6; fill: none; stroke-dasharray: 6 4; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="870" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="30" y="42" font-size="24" font-weight="800" fill="#0f172a">Catalyst Radar — System Architecture</text>
+  <text x="30" y="64" font-size="13" fill="#475569">Configurable sources per market (India pack shown) → filter noise → investigate → verify → explain → alert</text>
+
+  <!-- ================= COLUMN 1: SOURCES ================= -->
+  <!-- Official -->
+  <rect x="30" y="80" width="240" height="150" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="45" y="102" class="grp-title">Official sources 🇮🇳</text>
+  <rect x="45" y="115" width="210" height="30" rx="6" fill="#fff" stroke="#a7f3d0"/><text x="57" y="135" class="node">NSE announcements</text>
+  <rect x="45" y="150" width="210" height="30" rx="6" fill="#fff" stroke="#a7f3d0"/><text x="57" y="170" class="node">BSE announcements</text>
+  <rect x="45" y="185" width="210" height="30" rx="6" fill="#fff" stroke="#a7f3d0"/><text x="57" y="205" class="node">SEBI orders</text>
+
+  <!-- News -->
+  <rect x="30" y="250" width="240" height="250" rx="10" fill="#fefce8" stroke="#eab308" stroke-width="1.5"/>
+  <text x="45" y="272" class="grp-title">News sources 🇮🇳</text>
+  <rect x="45" y="285" width="210" height="30" rx="6" fill="#fff" stroke="#fde68a"/><text x="57" y="305" class="node">Zerodha Pulse</text>
+  <rect x="45" y="320" width="210" height="30" rx="6" fill="#fff" stroke="#fde68a"/><text x="57" y="340" class="node">Moneycontrol</text>
+  <rect x="45" y="355" width="210" height="30" rx="6" fill="#fff" stroke="#fde68a"/><text x="57" y="375" class="node">Economic Times</text>
+  <rect x="45" y="390" width="210" height="30" rx="6" fill="#fff" stroke="#fde68a"/><text x="57" y="410" class="node">Business Standard</text>
+  <rect x="45" y="425" width="210" height="30" rx="6" fill="#fff" stroke="#fde68a"/><text x="57" y="445" class="node">Mint</text>
+  <rect x="45" y="460" width="210" height="30" rx="6" fill="#fff" stroke="#fde68a"/><text x="57" y="480" class="node">Bloomberg (headlines)</text>
+
+  <!-- Context -->
+  <rect x="30" y="520" width="240" height="72" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="45" y="542" class="grp-title">Context</text>
+  <rect x="45" y="552" width="210" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/><text x="57" y="572" class="node">Screener.in financials</text>
+
+  <!-- Price APIs -->
+  <rect x="30" y="610" width="240" height="145" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="45" y="632" class="grp-title">Price APIs (official)</text>
+  <rect x="45" y="645" width="210" height="30" rx="6" fill="#fff" stroke="#ddd6fe"/><text x="57" y="665" class="node">Zerodha Kite Connect</text>
+  <rect x="45" y="682" width="210" height="30" rx="6" fill="#fff" stroke="#ddd6fe"/><text x="57" y="702" class="node">Groww Trade API <tspan class="sub">(fallback)</tspan></text>
+  <rect x="45" y="717" width="210" height="30" rx="6" fill="#fff" stroke="#ddd6fe"/><text x="57" y="737" class="node">🇺🇸 Finnhub <tspan class="sub">(US prices)</tspan></text>
+
+  <!-- ================= COLUMN 2: TINYFISH ================= -->
+  <rect x="320" y="130" width="210" height="375" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+  <text x="335" y="155" class="grp-title">TinyFish (web agents)</text>
+
+  <rect x="335" y="170" width="180" height="100" rx="8" fill="#fff" stroke="#fdba74"/>
+  <text x="347" y="192" class="node">Agent API</text>
+  <text x="347" y="212" class="sub">Plain-English goal</text>
+  <text x="347" y="228" class="sub">Stealth browser, clicks, PDFs</text>
+  <text x="347" y="244" class="sub">Live view (streaming_url)</text>
+  <text x="347" y="260" class="sub">For NSE · BSE · Bloomberg</text>
+
+  <rect x="335" y="285" width="180" height="100" rx="8" fill="#fff" stroke="#fdba74"/>
+  <text x="347" y="307" class="node">Fetch API</text>
+  <text x="347" y="327" class="sub">Free · 1,000 URLs/day</text>
+  <text x="347" y="343" class="sub">10 URLs per call → markdown</text>
+  <text x="347" y="359" class="sub">Cache via ttl / ETag</text>
+  <text x="347" y="375" class="sub">For news · SEBI · Screener</text>
+
+  <rect x="335" y="400" width="180" height="90" rx="8" fill="#fff" stroke="#fdba74"/>
+  <text x="347" y="422" class="node">Search API</text>
+  <text x="347" y="442" class="sub">Ranked web results</text>
+  <text x="347" y="458" class="sub">Used to cross-check facts</text>
+
+  <!-- TinyFish -> sources -->
+  <path class="line" d="M335,205 C300,205 300,155 272,155" marker-end="url(#arr)"/>
+  <text x="276" y="196" class="lbl">reads</text>
+  <path class="line" d="M335,325 C300,325 300,375 272,375" marker-end="url(#arr)"/>
+  <text x="276" y="318" class="lbl">reads</text>
+  <path class="line" d="M335,360 C295,360 300,567 272,567" marker-end="url(#arr)"/>
+
+  <!-- ================= COLUMN 3: BACKEND ================= -->
+  <rect x="580" y="80" width="570" height="540" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="595" y="102" class="grp-title">Backend (Python · FastAPI · Docker)</text>
+
+  <!-- Scheduler & queue -->
+  <rect x="600" y="115" width="150" height="50" rx="8" fill="#fff" stroke="#cbd5e1"/>
+  <text x="612" y="137" class="node">Redis queue</text><text x="612" y="154" class="sub">arq workers · retries</text>
+  <rect x="790" y="115" width="150" height="50" rx="8" fill="#fff" stroke="#cbd5e1"/>
+  <text x="802" y="137" class="node">Source registry</text><text x="802" y="154" class="sub">packs + custom → jobs</text>
+  <path class="line" d="M790,140 L752,140" marker-end="url(#arr)"/>
+  <path class="line" d="M675,165 L675,223" marker-end="url(#arr)"/>
+  <text x="682" y="200" class="lbl">jobs</text>
+
+  <!-- Pipeline group -->
+  <rect x="600" y="225" width="530" height="225" rx="10" fill="#ffffff" stroke="#64748b" stroke-dasharray="4 3"/>
+  <text x="615" y="247" class="grp-title">Agent pipeline</text>
+
+  <rect x="615" y="265" width="110" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="627" y="290" class="node">1 Watcher</text><text x="627" y="308" class="sub">what's new?</text>
+  <rect x="743" y="265" width="110" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="755" y="290" class="node">2 De-dup</text><text x="755" y="308" class="sub">hash + match</text>
+  <rect x="871" y="265" width="110" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="883" y="290" class="node">3 Triage</text><text x="883" y="308" class="sub">important?</text>
+  <rect x="999" y="265" width="118" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="1011" y="290" class="node">4 Investigator</text><text x="1011" y="308" class="sub">read filing</text>
+
+  <rect x="999" y="368" width="118" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="1011" y="393" class="node">5 Verifier</text><text x="1011" y="411" class="sub">cross-check</text>
+  <rect x="871" y="368" width="110" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="883" y="393" class="node">6 Analyst</text><text x="883" y="411" class="sub">cites evidence</text>
+  <rect x="743" y="368" width="110" height="60" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="755" y="393" class="node">7 Publisher</text><text x="755" y="411" class="sub">save + push</text>
+
+  <path class="line" d="M725,295 L741,295" marker-end="url(#arr)"/>
+  <path class="line" d="M853,295 L869,295" marker-end="url(#arr)"/>
+  <path class="line" d="M981,295 L997,295" marker-end="url(#arr)"/>
+  <path class="line" d="M1058,325 L1058,366" marker-end="url(#arr)"/>
+  <path class="line" d="M999,398 L983,398" marker-end="url(#arr)"/>
+  <path class="line" d="M871,398 L855,398" marker-end="url(#arr)"/>
+  <text x="615" y="372" class="sub">Routine items stop</text>
+  <text x="615" y="387" class="sub">at Triage (~95%)</text>
+
+  <!-- TinyFish <-> pipeline -->
+  <path class="line" d="M532,330 L598,330" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <text x="537" y="320" class="lbl">calls</text>
+
+  <!-- Storage + API row -->
+  <rect x="600" y="500" width="160" height="60" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="612" y="524" class="node">PostgreSQL</text><text x="612" y="542" class="sub">events · facts · evidence</text>
+  <rect x="780" y="500" width="170" height="60" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="792" y="524" class="node">Redis cache</text><text x="792" y="542" class="sub">pub/sub · prices</text>
+  <rect x="975" y="500" width="155" height="60" rx="8" fill="#fff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="987" y="524" class="node">FastAPI</text><text x="987" y="542" class="sub">REST + SSE stream</text>
+
+  <path class="line" d="M798,428 L798,498" marker-end="url(#arr)"/>
+  <text x="805" y="470" class="lbl">pub/sub</text>
+  <path class="line" d="M743,410 L680,410 L680,498" marker-end="url(#arr)"/>
+  <text x="687" y="470" class="lbl">save</text>
+  <path class="line" d="M950,530 L973,530" marker-end="url(#arr)"/>
+  <path class="line" d="M680,560 L680,595 L1040,595 L1040,562" marker-end="url(#arr)"/>
+  <text x="840" y="589" class="lbl">read alerts</text>
+
+  <!-- FastAPI -> prices -->
+  <path class="line" d="M1100,560 L1100,690 L272,690" marker-end="url(#arr)"/>
+  <text x="560" y="683" class="lbl">live quotes · India: Kite → Groww fallback · US: Finnhub</text>
+
+  <!-- ================= COLUMN 4: AI + APP ================= -->
+  <rect x="1200" y="270" width="190" height="90" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+  <text x="1215" y="295" class="node">Claude (LLM)</text>
+  <text x="1215" y="315" class="sub">Haiku → triage (cheap)</text>
+  <text x="1215" y="331" class="sub">Sonnet → analysis</text>
+  <text x="1215" y="347" class="sub">JSON output, schema-checked</text>
+  <path class="line" d="M1132,315 L1198,315" marker-start="url(#arr)" marker-end="url(#arr)"/>
+
+  <rect x="1200" y="440" width="220" height="220" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="1215" y="463" class="grp-title">Web app (Next.js)</text>
+  <rect x="1215" y="478" width="190" height="44" rx="6" fill="#fff" stroke="#bfdbfe"/>
+  <text x="1227" y="497" class="node">Watchlist</text><text x="1227" y="513" class="sub">live price + event badges</text>
+  <rect x="1215" y="530" width="190" height="44" rx="6" fill="#fff" stroke="#bfdbfe"/>
+  <text x="1227" y="549" class="node">Feed</text><text x="1227" y="565" class="sub">alerts by priority</text>
+  <rect x="1215" y="582" width="190" height="64" rx="6" fill="#fff" stroke="#bfdbfe"/>
+  <text x="1227" y="601" class="node">Deep dive</text><text x="1227" y="617" class="sub">facts · evidence · bull/bear</text>
+  <text x="1227" y="633" class="sub">live agent browser view</text>
+
+  <path class="line" d="M1132,530 L1198,530" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <text x="1138" y="522" class="lbl">REST+SSE</text>
+
+  <!-- live view dashed: TinyFish -> deep dive -->
+  <path class="dash" d="M425,505 L425,770 L1175,770 L1175,614 L1213,614" marker-end="url(#arrO)"/>
+  <text x="620" y="763" class="lbl" fill="#c2410c">live browser view of each agent run (TinyFish streaming_url)</text>
+
+  <!-- User -->
+  <circle cx="1510" cy="530" r="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <circle cx="1510" cy="519" r="10" fill="#64748b"/>
+  <path d="M1490,548 Q1510,528 1530,548" fill="#64748b"/>
+  <text x="1510" y="585" class="node" text-anchor="middle">Investor</text>
+  <path class="line" d="M1474,530 L1422,530" marker-end="url(#arr)"/>
+
+  <!-- Legend -->
+  <g transform="translate(1200,700)">
+    <text x="0" y="0" class="grp-title">Legend</text>
+    <rect x="0" y="12" width="14" height="14" rx="3" fill="#ecfdf5" stroke="#10b981"/><text x="20" y="24" class="sub">Official (can alert alone)</text>
+    <rect x="0" y="32" width="14" height="14" rx="3" fill="#fefce8" stroke="#eab308"/><text x="20" y="44" class="sub">News (confirms / adds context)</text>
+    <rect x="200" y="12" width="14" height="14" rx="3" fill="#fff7ed" stroke="#f97316"/><text x="220" y="24" class="sub">AI services</text>
+    <rect x="200" y="32" width="14" height="14" rx="3" fill="#eff6ff" stroke="#3b82f6"/><text x="220" y="44" class="sub">Data / UI</text>
+    <line x1="0" y1="62" x2="30" y2="62" class="line"/><text x="36" y="66" class="sub">data flow</text>
+    <line x1="120" y1="62" x2="150" y2="62" class="dash"/><text x="156" y="66" class="sub">live stream</text>
+  </g>
+
+  <!-- Custom sources -->
+  <rect x="30" y="772" width="240" height="56" rx="10" fill="#faf5ff" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="45" y="795" class="node">＋ User-added sources</text>
+  <text x="45" y="813" class="sub">+ 🇺🇸 US pack · config, not code</text>
+  <!-- Footer -->
+  <text x="30" y="850" font-size="11" fill="#64748b">Reliability: retries + back-off · circuit breaker per source · Fetch→Agent and NSE→BSE fallbacks · idempotent de-dup · replay mode for offline use.  Scale: work is per company, not per user.</text>
+</svg>

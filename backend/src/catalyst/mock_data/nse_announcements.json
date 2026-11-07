@@ -1,0 +1,4 @@
+[
+ {"symbol":"LT","sm_name":"Larsen & Toubro Limited","desc":"Bagging/Receiving of orders/contracts","an_dt":"{{nsedt:-20}}","attchmntFile":"https://example.com/sim/nse-lt-order.pdf","attchmntText":"Larsen & Toubro has informed the Exchange about receipt of a significant order worth ₹2,500 crore for a metro rail project. (Simulated)","seq_id":"990001","smIndustry":"Engineering"},
+ {"symbol":"LT","sm_name":"Larsen & Toubro Limited","desc":"Analysts/Institutional Investor Meet/Con. Call Updates","an_dt":"{{nsedt:-300}}","attchmntFile":"https://example.com/sim/nse-lt-meet.pdf","attchmntText":"Schedule of analyst meet. (Simulated)","seq_id":"990002","smIndustry":"Engineering"}
+]
