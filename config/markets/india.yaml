@@ -159,6 +159,46 @@ sources:
     interval: 15m
     active_hours: "09:15-15:45"
 
+  - id: groww_top_gainers
+    name: Groww – Top gainers (all NSE stocks)
+    url: https://groww.in/markets/top-gainers
+    parser: groww_market
+    method: auto
+    trust: context
+    tag: unusual_move
+    interval: 15m
+    active_hours: "09:15-15:45"
+
+  - id: groww_top_losers
+    name: Groww – Top losers (all NSE stocks)
+    url: https://groww.in/markets/top-losers
+    parser: groww_market
+    method: auto
+    trust: context
+    tag: unusual_move
+    interval: 15m
+    active_hours: "09:15-15:45"
+
+  - id: groww_52w_high
+    name: Groww – 52-week highs
+    url: https://groww.in/markets/52-week-high
+    parser: groww_market
+    method: auto
+    trust: context
+    tag: unusual_move
+    interval: 30m
+    active_hours: "09:15-15:45"
+
+  - id: groww_52w_low
+    name: Groww – 52-week lows
+    url: https://groww.in/markets/52-week-low
+    parser: groww_market
+    method: auto
+    trust: context
+    tag: unusual_move
+    interval: 30m
+    active_hours: "09:15-15:45"
+
   - id: mc_deals
     name: Moneycontrol – Bulk / block / insider deals
     url: https://www.moneycontrol.com/markets/stock-deals/

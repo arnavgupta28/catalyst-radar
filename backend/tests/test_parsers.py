@@ -53,3 +53,13 @@ def test_rss_nse_sec(page):
     sec = feeds.parse_sec_submissions(page("sec_submissions.json"), "sec", "AAPL")
     assert [i.payload["form"] for i in sec] == ["8-K", "10-Q"]  # Form 4 skipped
     assert sec[0].company_hint == "NVDA"  # filer's own ticker wins over the listing we asked about
+
+
+def test_groww_market(page):
+    from catalyst.sources import groww
+
+    items = groww.parse_groww_market(page("groww_market.html"), "groww_top_gainers")
+    bel, fin = items
+    assert bel.company_hint == "BEL" and "top gainers" in bel.title and "+4.80%" in bel.title
+    assert bel.payload["change_pct"] == 4.8 and bel.tag == "unusual_move"
+    assert "Results yesterday" in fin.title  # Groww's own tag is kept

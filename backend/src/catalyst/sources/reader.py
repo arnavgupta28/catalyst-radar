@@ -10,7 +10,7 @@ from zoneinfo import ZoneInfo
 
 from catalyst.providers.web import WebReader
 from catalyst.schemas import Company, Market, RawItem, SearchOptions, Source, utcnow
-from catalyst.sources import feeds, moneycontrol, pulse
+from catalyst.sources import feeds, groww, moneycontrol, pulse
 
 log = logging.getLogger("catalyst.sources")
 
@@ -24,6 +24,7 @@ PARSERS: dict[str, Parser] = {
     "mc_deals": lambda text, src, hint: moneycontrol.parse_deals(text, src.id),
     "mc_earnings_calendar": lambda text, src, hint: moneycontrol.parse_earnings_calendar(text, src.id),
     "mc_fii_dii": lambda text, src, hint: moneycontrol.parse_fii_dii(text, src.id),
+    "groww_market": lambda text, src, hint: groww.parse_groww_market(text, src.id, src.tag),
     "rss": lambda text, src, hint: feeds.parse_rss(text, src.id),
     "nse_announcements": lambda text, src, hint: feeds.parse_nse_announcements(text, src.id, hint),
     "sec_submissions": lambda text, src, hint: feeds.parse_sec_submissions(text, src.id, hint),

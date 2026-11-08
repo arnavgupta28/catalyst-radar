@@ -116,6 +116,7 @@ class AutoReader:
 # ------------------------------------------------------------------ mock
 _MOCK_ROUTES: list[tuple[str, str]] = [
     (r"pulse\.zerodha\.com", "pulse.html"),
+    (r"groww\.in/markets", "groww_market.html"),
     (r"moneycontrol\.com/markets/corporate-action", "mc_corporate_action.html"),
     (r"moneycontrol\.com/stocks/market-stats", "mc_market_stats.html"),
     (r"moneycontrol\.com/markets/stock-deals", "mc_deals.html"),

@@ -92,6 +92,23 @@ Checked 7 Nov 2026. The **Markets** menu gives us two kinds of data: **news feed
 - **Polite:** at most one request per page per check, at least 1 s apart, cached with ETag.
 - **New event types** from this source: `unusual_move`, `corporate_action`, `bulk_block_deal`, `insider_trade`, `results_scheduled`, `brokerage_view` (third-party opinion).
 
+## Groww — market movers (top gainers / losers / 52-week high & low)
+
+Checked 8 Nov 2026. Public Next.js pages with the whole list embedded as JSON (`__NEXT_DATA__` → `props.pageProps`).
+
+| Page | URL | Rows (sample day) | Use |
+|---|---|---|---|
+| Top gainers | `groww.in/markets/top-gainers` | 100 | 🚨 unusual-move trigger for watchlist stocks |
+| Top losers | `groww.in/markets/top-losers` | 100 | 🚨 unusual-move trigger |
+| 52-week high | `groww.in/markets/52-week-high` | 24 | 📈 "new 52-week high" alerts (input.md request) |
+| 52-week low | `groww.in/markets/52-week-low` | 1 | 📉 "new 52-week low" alerts |
+
+**Fields per stock:** `companyName`, `nseScriptCode`, `bseScriptCode`, `isin`, `ltp`, `close` (previous close, so change % = ltp/close − 1), `yearHigh`, `yearLow`, `marketCap`, and Groww's own `tag` (e.g. *"Results yesterday"*), which we keep in the alert.
+
+**Filters:** default is the whole market (`GIDXNIFTYTOTALMCAP`). An index filter works through the URL when **both** params are set, e.g. `?index=GIDXNIFTY100&section=1` (42 rows). Other indices on the page: NIFTY 50, NIFTY Next 50, NIFTY Midcap 150, NIFTY Bank, NIFTY FMCG, NIFTY PSU Bank, BSE 100, BSE Bankex; plus Large / Mid / Small cap. We use the whole-market lists so no watchlist stock is missed.
+
+**How we read it:** direct HTTP (TinyFish Fetch fallback), every 15 min in market hours (52-week pages every 30 min), parser `groww_market`. Same rules as Moneycontrol: public pages only, no internal APIs, polite polling.
+
 ## Not scraped — official APIs instead
 
 > **Free-tier choice:** Angel One SmartAPI → Upstox → yfinance (India) and Finnhub → Alpaca → Twelve Data (US). Kite and Groww stay as paid upgrades. Details: [docs/ARCHITECTURE-FREE-TIER.md](docs/ARCHITECTURE-FREE-TIER.md#3-price-apis-with-free-daily-limits).

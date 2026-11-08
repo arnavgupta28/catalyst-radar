@@ -14,6 +14,7 @@ URLS = [
     "https://www.moneycontrol.com/news/business/markets/",
     "https://www.moneycontrol.com/stocks/market-stats/price-shockers-nse/",
     "https://www.moneycontrol.com/markets/corporate-action/",
+    "https://groww.in/markets/top-gainers",
     "https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms",
     "https://www.business-standard.com/rss/markets-106.rss",
     "https://www.livemint.com/rss/markets",

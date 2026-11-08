@@ -17,7 +17,7 @@ dbutils.library.restartPython()  # noqa: F821
 dbutils.widgets.text("url", "https://pulse.zerodha.com/", "URL")  # noqa: F821
 dbutils.widgets.dropdown(  # noqa: F821
     "parser", "pulse",
-    ["pulse", "mc_news_list", "mc_corporate_action", "mc_market_stats", "mc_deals", "mc_earnings_calendar",
+    ["pulse", "groww_market", "mc_news_list", "mc_corporate_action", "mc_market_stats", "mc_deals", "mc_earnings_calendar",
      "mc_fii_dii", "rss", "nse_announcements", "sec_submissions"], "Parser")
 dbutils.widgets.dropdown("method", "auto", ["auto", "direct", "tinyfish_fetch"], "Method")  # noqa: F821
 w = {k: dbutils.widgets.get(k) for k in ("url", "parser", "method")}  # noqa: F821
