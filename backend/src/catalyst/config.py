@@ -16,15 +16,26 @@ Mode = Literal["mock", "local", "live"]
 
 
 def find_repo_root(start: Path | None = None) -> Path:
-    """Walk up until we find config/markets (works locally and in a Databricks Git folder)."""
+    """Find the repo root (the folder containing config/markets).
+
+    Searched upward from: an explicit start, the package file (editable/dev installs), and the current
+    directory. The last one matters on Databricks: `%pip install ../../backend` copies the package into
+    site-packages, but the notebook's working directory is inside the Git folder.
+    """
     env = os.environ.get("CATALYST_REPO_ROOT")
     if env:
         return Path(env)
-    here = (start or Path(__file__)).resolve()
-    for parent in [here, *here.parents]:
-        if (parent / "config" / "markets").is_dir():
-            return parent
-    return Path.cwd()
+    starts = [p for p in (start, Path(__file__), Path.cwd()) if p is not None]
+    for s in starts:
+        here = s.resolve()
+        for parent in [here, *here.parents]:
+            if (parent / "config" / "markets").is_dir():
+                return parent
+    raise FileNotFoundError(
+        "Could not find the repo's config/markets folder (searched up from "
+        f"{', '.join(str(s) for s in starts)}). Run from inside the repo / Git folder, "
+        "or set CATALYST_REPO_ROOT to the repo path."
+    )
 
 
 class Settings(BaseSettings):

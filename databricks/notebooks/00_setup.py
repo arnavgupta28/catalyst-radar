@@ -28,8 +28,12 @@ print(f"Using catalog={catalog!r} schema prefix={prefix!r}")
 
 # COMMAND ----------
 
-sql_dir = find_repo_root() / "databricks" / "sql"
-for path in sorted(sql_dir.glob("*.sql")):
+repo_root = find_repo_root()
+sql_dir = repo_root / "databricks" / "sql"
+sql_files = sorted(sql_dir.glob("*.sql"))
+assert sql_files, f"No DDL files found in {sql_dir}"
+print(f"Repo root: {repo_root}")
+for path in sql_files:
     text = path.read_text().replace("${catalog}", catalog).replace("${prefix}", prefix)
     text = "\n".join(line for line in text.splitlines() if not line.strip().startswith("--"))
     statements = [s.strip() for s in re.split(r";\s*(?:\n|$)", text) if s.strip()]
