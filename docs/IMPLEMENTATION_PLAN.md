@@ -15,7 +15,7 @@ The task-level companion to the roadmap in [PLAN.md](../PLAN.md). Updated as we 
 | 3 | App database | **Delta first**, Lakebase when the website goes live | Fewer moving parts now; SQL store code is Postgres-compatible for later |
 | 4 | Python tooling | **uv + Python 3.12** | Fast, lockfile, matches Databricks serverless |
 | 5 | TinyFish | **Search + Fetch only; no Agent** | Agent costs per step ($0.016); Search free to 12,000/day, Fetch free to 1,000 URLs/day |
-| 6 | NSE filings (no Agent) | Moneycontrol corporate actions (relays exchange announcements) + **TinyFish Fetch** on NSE's JSON feed; BSE disabled | NSE times out from Databricks; BSE blocks plain requests |
+| 6 | NSE filings (no Agent) | **Direct** from Databricks (NSE answers a browser User-Agent), TinyFish Fetch fallback, plus Moneycontrol corporate actions; BSE disabled | Probe 2026-11-08: all hosts reachable; BSE blocks plain requests |
 | 7 | Main news feed | **Zerodha Pulse** (direct, TinyFish Fetch fallback) + Moneycontrol market section | One request covers most Indian outlets; Moneycontrol adds market data |
 | 8 | Website hosting | **Vercel** | No sleeping on free tier; Next.js native |
 | 9 | Local AI | **LM Studio**: Qwen3 1.7B (triage), Qwen3 4B (writer), Qwen3.5 9B (quality) | Free, under 4 GB each |
@@ -41,9 +41,9 @@ The task-level companion to the roadmap in [PLAN.md](../PLAN.md). Updated as we 
 
 Workspace: `https://dbc-8de4d59f-c9f5.cloud.databricks.com`
 
-1. **Git folder** 👤: *Workspace → Create → Git folder* → URL `https://github.com/arnavgupta28/catalyst-radar` → Create. (Public repo: no token needed.)
-2. **Setup** 👤: open `databricks/notebooks/00_setup` → *Run all* (serverless). It installs the package, creates `catalyst` (or falls back to `workspace.catalyst_*`), runs `databricks/sql/*.sql`, and loads config into `ops` tables. **Note the catalog/prefix it prints.**
-3. **Probe** 👤: run `01_probe_outbound`. It tells us which sources work directly and which go through TinyFish Fetch.
+1. ✅ **Git folder**: *Workspace → Create → Git folder* → URL `https://github.com/arnavgupta28/catalyst-radar` → Create. (Public repo: no token needed.)
+2. ✅ **Setup** (done 2026-11-08, catalog `catalyst`): open `databricks/notebooks/00_setup` → *Run all* (serverless). It installs the package, creates `catalyst` (or falls back to `workspace.catalyst_*`), runs `databricks/sql/*.sql`, and loads config into `ops` tables. **Note the catalog/prefix it prints.**
+3. ✅ **Probe** (done 2026-11-08: every host reachable, incl. NSE with a browser UA): run `01_probe_outbound`. It tells us which sources work directly and which go through TinyFish Fetch.
 4. **Mock run on Databricks** 👤: run `10_pipeline_run` with `mode=mock`, `force=true`, then check:
    ```sql
    SELECT * FROM catalyst.gold.v_feed ORDER BY created_at DESC;

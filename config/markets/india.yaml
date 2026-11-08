@@ -113,7 +113,7 @@ sources:
     name: NSE – Corporate announcements
     url: "https://www.nseindia.com/api/corporate-announcements?index=equities&symbol={symbol}"
     parser: nse_announcements
-    method: tinyfish_fetch   # NSE times out from Databricks; test via Fetch
+    method: auto             # direct works from Databricks with a browser User-Agent (probe 2026-11-08); Fetch fallback
     trust: official
     scope: company
     exchange: NSE

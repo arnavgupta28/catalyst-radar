@@ -93,6 +93,8 @@ DATABRICKS_HOST=https://dbc-8de4d59f-c9f5.cloud.databricks.com
 
 Free Edition restricts outbound calls to "trusted domains". We tested from a workspace notebook on **7 Nov 2026**:
 
+Second probe (2026-11-08, browser User-Agent, `01_probe_outbound`): **every source host reachable**, incl. ET/BS/Mint/SEBI RSS, SEC EDGAR, CNBC.
+
 | Domain | Result | Meaning |
 |---|---|---|
 | `agent.tinyfish.ai` | ✅ 200 | TinyFish Agent reachable |
@@ -102,9 +104,9 @@ Free Edition restricts outbound calls to "trusted domains". We tested from a wor
 | `api.anthropic.com` | ✅ 404 | Reachable (root path; real calls use `/v1/...`) |
 | `pypi.org`, `github.com` | ✅ 200 | Packages + code |
 | `query1.finance.yahoo.com` | ⚠️ 429 | Reachable but **rate-limited** (shared cloud IPs), so yfinance is unreliable from Databricks |
-| `www.nseindia.com` | ❌ timeout | NSE drops cloud traffic: filings come via Moneycontrol corporate actions + **TinyFish Fetch** on NSE's JSON feed |
-| `pulse.zerodha.com` | ⏳ test next | Main news feed: direct if reachable, else TinyFish Fetch |
-| `www.moneycontrol.com` | ⏳ test next | Market news + market data: direct if reachable, else TinyFish Fetch |
+| `www.nseindia.com` | ✅ 200 | Reachable **with a browser-like User-Agent** (the first test used Python's default UA and timed out). NSE filings fetched directly; TinyFish Fetch as fallback |
+| `pulse.zerodha.com` | ✅ 200 | Main news feed, fetched directly |
+| `www.moneycontrol.com` | ✅ 200 | News list + market-data pages (embedded JSON present), fetched directly |
 
 **Key insight:** every website is read **through TinyFish**, which Databricks can reach. So TinyFish acts as our gateway to the web, and the trusted-domain limit mostly doesn't matter. Direct calls are only for price APIs (reachable) and Pulse (cheap, if reachable).
 
